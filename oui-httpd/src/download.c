@@ -27,7 +27,7 @@
 #include <ctype.h>
 #include <errno.h>
 
-static bool urldecode(char *buf)
+static bool urldecode_oh(char *buf)
 {
     char *c, *p;
 
@@ -107,8 +107,8 @@ static void parse_data(const char *body, int body_len, struct download_params *p
         }
     }
 
-    urldecode(params->path);
-    urldecode(params->filename);
+    urldecode_oh(params->path);
+    urldecode_oh(params->filename);
 }
 
 void serve_download(struct uh_connection *conn, int event)
